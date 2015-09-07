@@ -29,7 +29,6 @@ public class ServiceServer {
     private ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
     private Charset charset = Charset.forName("ISO-8859-2");
 
-
     private ArrayList<SocketChannel> allClientsList = new ArrayList<SocketChannel>();
 
 
@@ -42,7 +41,6 @@ public class ServiceServer {
         serverInit();
 
     }
-
 
     private void serverInit() throws IOException {
 
@@ -93,7 +91,6 @@ public class ServiceServer {
 
                     sendToSelectedClient(socketChannel, "getTopicListSize");
 
-
                     continue;
                 }
 
@@ -141,9 +138,7 @@ public class ServiceServer {
 
         System.out.println(requestString);
 
-
         StringTokenizer stringTokenizer = new StringTokenizer(requestString.toString());
-
 
         String command = "", subject = "";
 
@@ -159,7 +154,6 @@ public class ServiceServer {
                 topicsToClientsHashMap.get(subject).add(socketChannel);
 
             }
-
 
         } else if (command.equals("unsubscribe")) {
 
@@ -211,9 +205,7 @@ public class ServiceServer {
 
             }
 
-
             allClientsList.remove(socketChannel);
-
 
 
         } else if (command.equals("addTopic")) {
@@ -247,14 +239,9 @@ public class ServiceServer {
 
             }
 
-            //  System.out.println("treść newsa to " + newsContent);
-
-
             int size = topicsToClientsHashMap.get(subject).size();
 
-
             System.out.println("jestem w wysyłaniu size to " + size);
-
 
             if (size == 0) {
 
@@ -267,21 +254,17 @@ public class ServiceServer {
                 }
 
             }
-
             command = "";
             subject = "";
         }
 
     }
 
-
     private void sendToSelectedClient(SocketChannel socketChannel, String subject) throws IOException {
 
         if (!socketChannel.isOpen()) return;
 
-
         System.out.println("send " + subject + "||| to client");
-
 
         StringBuffer outStringBuffer = new StringBuffer();
 
@@ -293,9 +276,7 @@ public class ServiceServer {
         ByteBuffer buf = charset.encode(CharBuffer.wrap(outStringBuffer));
         socketChannel.write(buf);
 
-
     }
-
 
     private void newsMapInit() {
 
@@ -308,21 +289,16 @@ public class ServiceServer {
         topicsToClientsHashMap.put("gotowanie", new ArrayList<SocketChannel>());
         topicsToClientsHashMap.put("randki", new ArrayList<SocketChannel>());
 
-
         topic.add("polityka");
         topic.add("sport");
         topic.add("celebryci");
         topic.add("gotowanie");
         topic.add("randki");
-
-
     }
-
 
     public static void main(String args[]) throws IOException {
         new ServiceServer();
 
     }
-
 
 }

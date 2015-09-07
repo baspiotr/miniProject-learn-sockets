@@ -61,7 +61,6 @@ try {
 
             String s = (String) gui.getSubjectComboBox().getSelectedItem();
 
-
             System.out.println(s);
 
             System.out.println(subscribeList.toString() + "ascascas");
@@ -74,7 +73,6 @@ if(subscribeList.contains(s)){
                 gui.getSendSubscribeButton().setVisible(true);
 
             }
-
 
         }
     });
@@ -91,9 +89,7 @@ if(subscribeList.contains(s)){
 
                 messageStr += gui.getSubjectComboBoxSelectedValue();
 
-
                 subscribeList.add(gui.getSubjectComboBoxSelectedValue());
-
 
                 try {
                     sendToServer(messageStr);
@@ -101,7 +97,6 @@ if(subscribeList.contains(s)){
                     ex.printStackTrace();
                 }
 
-                // System.out.println("message= "+messageStr);
 
             }
         });
@@ -114,7 +109,6 @@ if(subscribeList.contains(s)){
                 messageStr = "";
                 messageStr = "unsubscribe ";
 
-
                 messageStr += gui.getSubjectComboBoxSelectedValue();
 
 
@@ -124,7 +118,6 @@ if(subscribeList.contains(s)){
 
                 }
 
-                // System.out.println("message= "+messageStr);
                 try {
                     sendToServer(messageStr);
                 } catch (IOException ex) {
@@ -175,11 +168,9 @@ if(subscribeList.contains(s)){
                             topic = st.nextToken();
                             topic = st.nextToken();
 
-
                             System.out.println("Dodaje " + topic + " do combobox");
 
                             gui.getSubjectComboBox().addItem(topic);
-
 
                         }
 
@@ -187,17 +178,14 @@ if(subscribeList.contains(s)){
                             gui.getNewsTextArea().append(result.toString() + '\n');
                         }
 
-
                         System.out.println("Przyszło od serwara " + result.toString());
 
                         result.setLength(0);
                     }
 
-
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
-
 
                 channel.close();
                 gui.getFrame().dispatchEvent(new WindowEvent(gui.getFrame(), WindowEvent.WINDOW_CLOSING));
@@ -218,12 +206,9 @@ if(subscribeList.contains(s)){
 
         ByteBuffer buf = charset.encode(CharBuffer.wrap(outStringBuffer));
         channel.write(buf);
-
     }
 
-
     private void connectToServer() throws IOException, InterruptedException {
-
 
         channel = SocketChannel.open();
         channel.configureBlocking(false);

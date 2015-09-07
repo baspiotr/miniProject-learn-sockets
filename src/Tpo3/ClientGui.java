@@ -15,25 +15,18 @@ public class ClientGui {
     public JButton sendSubscribeButton, sendUnsubscribeButton;
     private JTextArea newsTextArea;
 
-
     private JComboBox<String> subjectComboBox;
     private JLabel infoOneLabel, infoTwolabel;
     private JPanel panelOne, panelTwo;
 
 
     public ClientGui() {
-
-
         guiInit();
-
-
     }
-
 
     private ComboBoxRenderer renderer;
 
     private void guiInit() {
-
 
         frame = new JFrame();
         frame.setLayout(new GridLayout(2, 1));
@@ -46,13 +39,11 @@ public class ClientGui {
 
         newsTextArea = new JTextArea();
 
-
         DefaultCaret caret = (DefaultCaret) newsTextArea.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
         JScrollPane scrollNewsTextArea = new JScrollPane();
         scrollNewsTextArea.setViewportView(newsTextArea);
-
 
         infoOneLabel = new JLabel("Wpisz temat który Cię interesuje. Kliknij subscribe aby dostawać wiadomości o tej tematyce, lub Unsubscribe aby zrezygnować z ich otrzymywania.");
         infoTwolabel = new JLabel("Poniżej wyświetlane są przychodzące wiadomości.");
@@ -63,19 +54,16 @@ public class ClientGui {
 
         panelOne.add(infoOneLabel);
 
-
         subjectComboBox.addItem("polityka");
         subjectComboBox.addItem("sport");
         subjectComboBox.addItem("celebryci");
         subjectComboBox.addItem("gotowanie");
         subjectComboBox.addItem("randki");
 
-
         panelOne.add(subjectComboBox);
 
         panelOne.add(sendSubscribeButton);
         panelOne.add(sendUnsubscribeButton);
-
 
         frame.add(panelOne);
 
@@ -98,48 +86,32 @@ public class ClientGui {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
             // }
         });
 
-
         frame.setVisible(true);
 
-
     }
-
-
 
     public String getSubjectComboBoxSelectedValue() {
         return subjectComboBox.getSelectedItem().toString();
     }
-
-
     public JComboBox<String> getSubjectComboBox() {
         return subjectComboBox;
     }
-
-
     public JTextArea getNewsTextArea() {
         return newsTextArea;
     }
-
-
     public JButton getSendUnsubscribeButton() {
         return sendUnsubscribeButton;
     }
-
-
     public JButton getSendSubscribeButton() {
         return sendSubscribeButton;
     }
-
-
     public JFrame getFrame() {
         return frame;
     }
-
 
     public static void main(String args[]) {
 

@@ -22,13 +22,10 @@ public class InfoSend {
 
     public InfoSend() throws IOException {
 
-
         connectToServer();
         guiInit();
 
-
     }
-
 
     private void guiInit() {
 
@@ -92,9 +89,7 @@ public class InfoSend {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
                 comboBox.addItem(addTopicTextFiled.getText().toString());
-
 
                 String msg = "addTopic " + addTopicTextFiled.getText().toString();
 
@@ -111,11 +106,9 @@ public class InfoSend {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-
         sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
 
                 String message = "news ";
 
@@ -141,9 +134,7 @@ public class InfoSend {
             }
         });
 
-
     }
-
 
     private void connectToServer() throws IOException {
 
@@ -164,7 +155,6 @@ public class InfoSend {
         }
         System.out.println("CONNECTED");
 
-
     }
 
     private void sendToServer(String messageToSend) throws IOException {
@@ -179,11 +169,9 @@ public class InfoSend {
         ByteBuffer buf = charset.encode(CharBuffer.wrap(outStringBuffer));
         channel.write(buf);
 
-
     }
 
     public static void main(String args[]) throws IOException {
-
 
         new InfoSend();
 

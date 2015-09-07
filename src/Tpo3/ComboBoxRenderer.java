@@ -33,15 +33,11 @@ class ComboBoxRenderer extends JPanel implements ListCellRenderer {
         strings = str;
     }
 
-
     public void refresh() {
 
         colors = null;
         strings = null;
-
-
     }
-
 
     public Color[] getColors() {
         return colors;
@@ -54,7 +50,6 @@ class ComboBoxRenderer extends JPanel implements ListCellRenderer {
     @Override
     public Component getListCellRendererComponent(JList list, Object value,
                                                   int index, boolean isSelected, boolean cellHasFocus) {
-
 
         try {
 
@@ -82,11 +77,9 @@ class ComboBoxRenderer extends JPanel implements ListCellRenderer {
                 text.setForeground(colors[index]);
             }
 
-
         } catch (Exception er) {
-
+        er.printStackTrace();
         }
-
 
         return text;
     }
