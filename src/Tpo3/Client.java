@@ -24,15 +24,11 @@ public class Client {
     private ClientGui gui;
     String messageStr = "";
 
-
     ArrayList<String> subscribeList =new ArrayList<String>();
-
 
     private ArrayList<String> topicsList = new ArrayList<String>();
 
-
     public Client() throws IOException, InterruptedException {
-
 
         topicListInit();
 
@@ -44,9 +40,7 @@ public class Client {
 
     }
 
-
     private void topicListInit() {
-
 
         topicsList.add("polityka");
         topicsList.add("sport");
@@ -54,21 +48,11 @@ public class Client {
         topicsList.add("gotowanie");
         topicsList.add("randki");
 
-
     }
-
 
     private void guiController() {
 
 try {
-
-
-
-
-
-
-
-
 
     gui.getSubjectComboBox().addActionListener(new ActionListener() {
         @Override
@@ -85,9 +69,7 @@ if(subscribeList.contains(s)){
 
                 gui.getSendSubscribeButton().setVisible(false);//setEnabled(false);
 
-
             }else{
-
 
                 gui.getSendSubscribeButton().setVisible(true);
 
@@ -99,7 +81,6 @@ if(subscribeList.contains(s)){
 }catch (Exception ert){
 
 }
-
         gui.getSendSubscribeButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -120,9 +101,7 @@ if(subscribeList.contains(s)){
                     ex.printStackTrace();
                 }
 
-
                 // System.out.println("message= "+messageStr);
-
 
             }
         });
@@ -143,9 +122,7 @@ if(subscribeList.contains(s)){
 
                     subscribeList.remove(gui.getSubjectComboBoxSelectedValue());
 
-
                 }
-
 
                 // System.out.println("message= "+messageStr);
                 try {
@@ -153,21 +130,17 @@ if(subscribeList.contains(s)){
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-
             }
         });
 
     }
-
 
     private void readFromChennel() throws IOException {
 
         StringBuffer result = new StringBuffer();
         CharBuffer cbuf;
 
-
         while (true) {
-
 
             inByteBuffer.clear();
 
@@ -231,7 +204,6 @@ if(subscribeList.contains(s)){
             }
         }
 
-
     }
 
 
@@ -246,7 +218,6 @@ if(subscribeList.contains(s)){
 
         ByteBuffer buf = charset.encode(CharBuffer.wrap(outStringBuffer));
         channel.write(buf);
-
 
     }
 
@@ -267,13 +238,11 @@ if(subscribeList.contains(s)){
         }
         System.out.println("CONNECTED");
 
-
     }
 
 
     public static void main(String args[]) throws IOException, InterruptedException {
         new Client();
     }
-
 
 }

@@ -30,9 +30,6 @@ public class ClientGui {
     }
 
 
-    // public static ArrayList<Color> colors[] = {Color.BLUE, Color.CYAN};
-    //   public static String listaCombo[] = {"sd", "dfvfdv"};
-
     private ComboBoxRenderer renderer;
 
     private void guiInit() {
@@ -74,18 +71,6 @@ public class ClientGui {
         subjectComboBox.addItem("randki");
 
 
-       /* renderer = new ComboBoxRenderer(subjectComboBox);
-
-
-        renderer.setColors(colors);
-        renderer.setStrings(listaCombo);
-
-        subjectComboBox.setRenderer(renderer);
-
-        frame.add(subjectComboBox);
-        frame.pack();
-*/
-
         panelOne.add(subjectComboBox);
 
         panelOne.add(sendSubscribeButton);
@@ -99,16 +84,10 @@ public class ClientGui {
 
         frame.add(panelTwo);
 
-        //   frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-              /*  if (JOptionPane.showConfirmDialog(frame, "Are you sure to close this window?", "Really Closing?",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_NO_OPTION) {
-*/
+
                 try {
                     Client.sendToServer("close me");
 
@@ -130,17 +109,6 @@ public class ClientGui {
 
     }
 
-
-   /* public void comboOptions() {
-
-
-        renderer.refresh();
-
-        renderer.setColors(colors);
-        renderer.setStrings(listaCombo);
-
-
-    }*/
 
 
     public String getSubjectComboBoxSelectedValue() {
